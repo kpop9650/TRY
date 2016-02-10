@@ -518,15 +518,15 @@ namespace LeagueSharp.Common
         {
             var dashData = input.Unit.GetDashInfo();
             var result = new PredictionOutput { Input = input };
-
+            input.Delay += 0.1f;
             //Normal dashes.
             if (!dashData.IsBlink)
             {
                 //Mid air:
                 var endP = dashData.Path.Last();
                 var dashPred = GetPositionOnPath(
-                    input, new List<Vector2> { input.Unit.ServerPosition.To2D(), endP }, dashData.Speed);
-                if (dashPred.Hitchance >= HitChance.High && dashPred.UnitPosition.To2D().Distance(input.Unit.Position.To2D(), endP, true) < 200 )
+                    input, new List<Vector2> { input.Unit.ServerPosition.To2D(), dashData.Path.Last() }, dashData.Speed);
+                if (dashPred.Hitchance >= HitChance.High)
                 {
                     dashPred.CastPosition = dashPred.UnitPosition;
                     dashPred.Hitchance = HitChance.Dashing;
@@ -536,8 +536,8 @@ namespace LeagueSharp.Common
                 //At the end of the dash:
                 if (dashData.Path.PathLength() > 200)
                 {
-                    
-                    var timeToPoint = input.Delay / 2f + input.From.To2D().Distance(endP) / input.Speed - 0.25f;
+                    var endP = dashData.Path.Last();
+                    var timeToPoint = input.Delay + input.From.To2D().Distance(endP) / input.Speed;
                     if (timeToPoint <=
                         input.Unit.Distance(endP) / dashData.Speed + input.RealRadius / input.Unit.MoveSpeed)
                     {
@@ -692,16 +692,7 @@ namespace LeagueSharp.Common
             if (pLength >= input.Delay * speed - input.RealRadius &&
                 Math.Abs(input.Speed - float.MaxValue) > float.Epsilon)
             {
-                var d = input.Delay * speed - input.RealRadius;
-                if (input.Type == SkillshotType.SkillshotLine || input.Type == SkillshotType.SkillshotCone)
-                {
-                    if (input.From.Distance(input.Unit.ServerPosition, true) < 200 * 200)
-                    {
-                        d = input.Delay * speed;
-                    }
-                }
-
-                path = path.CutPath(d);
+                path = path.CutPath(Math.Max(0, input.Delay * speed - input.RealRadius));
                 var tT = 0f;
                 for (var i = 0; i < path.Count - 1; i++)
                 {

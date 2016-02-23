@@ -34,6 +34,16 @@ namespace LeagueSharp.Common
 {
     public class TargetSelector
     {
+        #region Main
+
+        static TargetSelector()
+        {
+            Game.OnWndProc += GameOnOnWndProc;
+            Drawing.OnDraw += DrawingOnOnDraw;
+        }
+
+        #endregion
+
         #region Enum
 
         public enum DamageType
@@ -52,8 +62,7 @@ namespace LeagueSharp.Common
             Closest,
             NearMouse,
             LessAttack,
-            LessCast,
-            MostStack
+            LessCast
         }
 
         #endregion
@@ -74,10 +83,12 @@ namespace LeagueSharp.Common
                 UsingCustom = value;
                 if (value)
                 {
+                    Game.OnWndProc -= GameOnOnWndProc;
                     Drawing.OnDraw -= DrawingOnOnDraw;
                 }
                 else
                 {
+                    Game.OnWndProc += GameOnOnWndProc;
                     Drawing.OnDraw += DrawingOnOnDraw;
                 }
             }
@@ -97,13 +108,6 @@ namespace LeagueSharp.Common
                     _selectedTargetObjAiHero.Position, 150, _configMenu.Item("SelTColor").GetValue<Circle>().Color, 7,
                     true);
             }
-
-            var a =  (_configMenu.Item("ForceFocusSelectedK").GetValue<KeyBind>().Active ||
-                      _configMenu.Item("ForceFocusSelectedK2").GetValue<KeyBind>().Active) && 
-                      _configMenu.Item("ForceFocusSelectedKeys").GetValue<bool>();
-
-            _configMenu.Item("ForceFocusSelectedKeys").Permashow(SelectedTarget != null && a);
-            _configMenu.Item("ForceFocusSelected").Permashow(_configMenu.Item("ForceFocusSelected").GetValue<bool>());
         }
 
         private static void GameOnOnWndProc(WndEventArgs args)
@@ -179,7 +183,7 @@ namespace LeagueSharp.Common
                 "Alistar", "Amumu", "Bard", "Blitzcrank", "Braum", "Cho'Gath", "Dr. Mundo", "Garen", "Gnar",
                 "Hecarim", "Janna", "Jarvan IV", "Leona", "Lulu", "Malphite", "Nami", "Nasus", "Nautilus", "Nunu",
                 "Olaf", "Rammus", "Renekton", "Sejuani", "Shen", "Shyvana", "Singed", "Sion", "Skarner", "Sona",
-                "Taric", "TahmKench", "Thresh", "Volibear", "Warwick", "MonkeyKing", "Yorick", "Zac", "Zyra"
+                "Soraka", "Taric", "Thresh", "Volibear", "Warwick", "MonkeyKing", "Yorick", "Zac", "Zyra"
             };
 
             string[] p2 =
@@ -199,10 +203,10 @@ namespace LeagueSharp.Common
             string[] p4 =
             {
                 "Ahri", "Anivia", "Annie", "Ashe", "Azir", "Brand", "Caitlyn", "Cassiopeia", "Corki", "Draven",
-                "Ezreal", "Graves", "Jinx", "Kalista", "Karma", "Karthus", "Katarina", "Kennen", "KogMaw", "Kindred",
-                "Leblanc", "Lucian", "Lux", "Malzahar", "MasterYi", "MissFortune", "Orianna", "Quinn", "Sivir", "Syndra",
-                "Talon", "Teemo", "Tristana", "TwistedFate", "Twitch", "Varus", "Vayne", "Veigar", "Velkoz", "Viktor",
-                "Xerath", "Zed", "Ziggs", "Jhin", "Soraka"
+                "Ezreal", "Graves", "Jinx", "Kalista", "Karma", "Karthus", "Katarina", "Kennen", "KogMaw", "Leblanc",
+                "Lucian", "Lux", "Malzahar", "MasterYi", "MissFortune", "Orianna", "Quinn", "Sivir", "Syndra", "Talon",
+                "Teemo", "Tristana", "TwistedFate", "Twitch", "Varus", "Vayne", "Veigar", "VelKoz", "Viktor", "Xerath",
+                "Zed", "Ziggs"
             };
 
             if (p1.Contains(championName))
@@ -229,27 +233,15 @@ namespace LeagueSharp.Common
 
                 _configMenu = config;
 
-                Menu focusMenu = new Menu("Focus Target Settings", "FocusTargetSettings");
-
-                focusMenu.AddItem(new MenuItem("FocusSelected", "Focus selected target").SetShared().SetValue(true));
-                focusMenu.AddItem(
-                    new MenuItem("SelTColor", "Focus selected target color").SetShared().SetValue(new Circle(true, Color.Red)));
-                focusMenu.AddItem(
-                    new MenuItem("ForceFocusSelected", "Only attack selected target").SetShared().SetValue(false));
-                focusMenu.AddItem(new MenuItem("sep", ""));
-                focusMenu.AddItem(
-                    new MenuItem("ForceFocusSelectedKeys", "Enable only attack selected Keys").SetShared().SetValue(false));
-                focusMenu.AddItem(
-                    new MenuItem("ForceFocusSelectedK", "Only attack selected Key"))
-                    .SetValue(new KeyBind(32, KeyBindType.Press));
-                focusMenu.AddItem(
-                    new MenuItem("ForceFocusSelectedK2", "Only attack selected Key 2"))
-                    .SetValue(new KeyBind(32, KeyBindType.Press));
-
-                config.AddSubMenu(focusMenu);
-
+                config.AddItem(new MenuItem("FocusSelected", "Focus selected target").SetShared().SetValue(true));
+                config.AddItem(
+                    new MenuItem("ForceFocusSelected", "Only attack selected target").SetShared().SetValue(false))
+                    .Permashow();
+                config.AddItem(
+                    new MenuItem("SelTColor", "Selected target color").SetShared().SetValue(new Circle(true, Color.Red)));
+                config.AddItem(new MenuItem("Sep", "").SetShared());
                 var autoPriorityItem =
-                    new MenuItem("AutoPriority", "Auto arrange priorities").SetShared().SetValue(false).SetTooltip("5 = Highest Priority");
+                    new MenuItem("AutoPriority", "Auto arrange priorities").SetShared().SetValue(false);
                 autoPriorityItem.ValueChanged += autoPriorityItem_ValueChanged;
 
                 foreach (var enemy in HeroManager.Enemies)
@@ -272,14 +264,7 @@ namespace LeagueSharp.Common
                     new MenuItem("TargetingMode", "Target Mode").SetShared()
                         .SetValue(new StringList(Enum.GetNames(typeof (TargetingMode)))));
 
-
-                CommonMenu.Instance.AddSubMenu(config);
-                Game.OnWndProc += GameOnOnWndProc;
-
-                if (!CustomTS)
-                {
-                    Drawing.OnDraw += DrawingOnOnDraw;
-                }
+                CommonMenu.Config.AddSubMenu(config);
             };
         }
 
@@ -303,13 +288,6 @@ namespace LeagueSharp.Common
 
         public static bool IsInvulnerable(Obj_AI_Base target, DamageType damageType, bool ignoreShields = true)
         {
-            //Kindred's Lamb's Respite(R)
-
-            if (target.HasBuff("kindredrnodeathbuff") && target.HealthPercent <= 10)
-            {
-                return true;
-            }
-
             // Tryndamere's Undying Rage (R)
             if (target.HasBuff("Undying Rage") && target.Health <= target.MaxHealth * 0.10f)
             {
@@ -319,6 +297,13 @@ namespace LeagueSharp.Common
             // Kayle's Intervention (R)
             if (target.HasBuff("JudicatorIntervention"))
             {
+                return true;
+            }
+
+            // Poppy's Diplomatic Immunity (R)
+            if (target.HasBuff("DiplomaticImmunity") && !ObjectManager.Player.HasBuff("poppyulttargetmark"))
+            {
+                //TODO: Get the actual target mark buff name
                 return true;
             }
 
@@ -408,18 +393,6 @@ namespace LeagueSharp.Common
                    !IsInvulnerable(target, damageType, ignoreShieldSpells);
         }
 
-        private static string[] StackNames =
-            {
-                "kalistaexpungemarker",
-                "vaynesilvereddebuff",
-                "twitchdeadlyvenom",
-                "ekkostacks",
-                "dariushemo",
-                "gnarwproc",
-                "tahmkenchpdebuffcounter",
-                "varuswdebuff",
-            };
-
         public static Obj_AI_Hero GetTarget(Obj_AI_Base champion,
             float range,
             DamageType type,
@@ -441,17 +414,6 @@ namespace LeagueSharp.Common
                     type, ignoreShieldSpells, rangeCheckFrom))
                 {
                     return SelectedTarget;
-                }
-
-                if (_configMenu != null && IsValidTarget(
-                    SelectedTarget, _configMenu.Item("ForceFocusSelectedKeys").GetValue<bool>() ? float.MaxValue : range,
-                    type, ignoreShieldSpells, rangeCheckFrom))
-                {
-                    if (_configMenu.Item("ForceFocusSelectedK").GetValue<KeyBind>().Active ||
-                        _configMenu.Item("ForceFocusSelectedK2").GetValue<KeyBind>().Active)
-                    {
-                        return SelectedTarget;
-                    }
                 }
 
                 if (_configMenu != null && _configMenu.Item("TargetingMode") != null &&
@@ -478,7 +440,7 @@ namespace LeagueSharp.Common
 
                     case TargetingMode.MostAP:
                         return targets.MaxOrDefault(hero => hero.BaseAbilityDamage + hero.FlatMagicDamageMod);
-						
+
                     case TargetingMode.Closest:
                         return
                             targets.MinOrDefault(
@@ -487,7 +449,7 @@ namespace LeagueSharp.Common
                                         hero.ServerPosition, true));
 
                     case TargetingMode.NearMouse:
-                        return targets.MinOrDefault(hero => hero.Distance(Game.CursorPos, true));
+                        return targets.Find(hero => hero.Distance(Game.CursorPos, true) < 22500); // 150 * 150
 
                     case TargetingMode.AutoPriority:
                         return
@@ -508,13 +470,6 @@ namespace LeagueSharp.Common
                                 hero =>
                                     champion.CalcDamage(hero, Damage.DamageType.Magical, 100) / (1 + hero.Health) *
                                     GetPriority(hero));
-
-                    case TargetingMode.MostStack:
-                        return
-                            targets.MaxOrDefault(
-                                hero =>
-                                    champion.CalcDamage(hero, damageType, 100) / (1 + hero.Health) * GetPriority(hero) +
-                                    (1 + hero.Buffs.Where(b => StackNames.Contains(b.Name.ToLower())).Sum(t => t.Count)));
                 }
             }
             catch (Exception e)

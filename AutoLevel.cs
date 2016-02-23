@@ -30,69 +30,28 @@ using System.Linq;
 
 namespace LeagueSharp.Common
 {
-    /// <summary>
-    /// Automatically levels skills.
-    /// </summary>
     public class AutoLevel
     {
-        /// <summary>
-        /// The order
-        /// </summary>
         private static List<SpellSlot> order = new List<SpellSlot>();
-
-        /// <summary>
-        /// The last leveled
-        /// </summary>
         private static float LastLeveled;
-
-        /// <summary>
-        /// The next delay
-        /// </summary>
         private static float NextDelay;
-
-        /// <summary>
-        /// The player
-        /// </summary>
         private static readonly Obj_AI_Hero Player = ObjectManager.Player;
-
-        /// <summary>
-        /// The random number
-        /// </summary>
         private static Random RandomNumber;
-
-        /// <summary>
-        /// The enabled
-        /// </summary>
         private static bool enabled;
-
-        /// <summary>
-        /// The initialize
-        /// </summary>
         private static bool init;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AutoLevel"/> class.
-        /// </summary>
-        /// <param name="levels">The levels.</param>
         public AutoLevel(IEnumerable<int> levels)
         {
             UpdateSequence(levels);
             Init();
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AutoLevel"/> class.
-        /// </summary>
-        /// <param name="levels">The levels.</param>
         public AutoLevel(List<SpellSlot> levels)
         {
             UpdateSequence(levels);
             Init();
         }
 
-        /// <summary>
-        /// Initializes this instance.
-        /// </summary>
         private static void Init()
         {
             if (init)
@@ -105,27 +64,19 @@ namespace LeagueSharp.Common
             Game.OnUpdate += Game_OnGameUpdate;
         }
 
-        /// <summary>
-        /// Fired when the game updates.
-        /// </summary>
-        /// <param name="args">The <see cref="EventArgs"/> instance containing the event data.</param>
         private static void Game_OnGameUpdate(EventArgs args)
         {
-            if (!enabled || Player.SpellTrainingPoints < 1 || Utils.TickCount - LastLeveled < NextDelay || MenuGUI.IsShopOpen)
+            if (!enabled || Player.SpellTrainingPoints < 1 || Utils.TickCount - LastLeveled < NextDelay)
             {
                 return;
             }
 
-            NextDelay = RandomNumber.Next(300, 1200);
+            NextDelay = RandomNumber.Next(750);
             LastLeveled = Utils.TickCount;
             var spell = order[GetTotalPoints()];
             Player.Spellbook.LevelSpell(spell);
         }
 
-        /// <summary>
-        /// Gets the total points.
-        /// </summary>
-        /// <returns></returns>
         private static int GetTotalPoints()
         {
             var spell = Player.Spellbook;
@@ -137,35 +88,21 @@ namespace LeagueSharp.Common
             return q + w + e + r;
         }
 
-        /// <summary>
-        /// Enables this instance.
-        /// </summary>
         public static void Enable()
         {
             enabled = true;
         }
 
-        /// <summary>
-        /// Disables this instance.
-        /// </summary>
         public static void Disable()
         {
             enabled = false;
         }
 
-        /// <summary>
-        /// Sets if this instance is enabled or not according to the <paramref name="b"/>.
-        /// </summary>
-        /// <param name="b">if set to <c>true</c> [b].</param>
         public static void Enabled(bool b)
         {
             enabled = b;
         }
 
-        /// <summary>
-        /// Updates the sequence.
-        /// </summary>
-        /// <param name="levels">The levels.</param>
         public static void UpdateSequence(IEnumerable<int> levels)
         {
             Init();
@@ -176,10 +113,6 @@ namespace LeagueSharp.Common
             }
         }
 
-        /// <summary>
-        /// Updates the sequence.
-        /// </summary>
-        /// <param name="levels">The levels.</param>
         public static void UpdateSequence(List<SpellSlot> levels)
         {
             Init();
@@ -187,19 +120,11 @@ namespace LeagueSharp.Common
             order = levels;
         }
 
-        /// <summary>
-        /// Gets the sequence.
-        /// </summary>
-        /// <returns></returns>
         public static int[] GetSequence()
         {
             return order.Select(spell => (int) spell).ToArray();
         }
 
-        /// <summary>
-        /// Gets the sequence list.
-        /// </summary>
-        /// <returns></returns>
         public static List<SpellSlot> GetSequenceList()
         {
             return order;

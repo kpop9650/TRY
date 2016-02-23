@@ -30,106 +30,36 @@ using SharpDX;
 
 namespace LeagueSharp.Common
 {
-    using System;
-
-    /// <summary>
-    /// An enum representing the order the minions should be listed.
-    /// </summary>
     public enum MinionOrderTypes
     {
-        /// <summary>
-        /// No order.
-        /// </summary>
         None,
-
-        /// <summary>
-        /// Ordered by the current health of the minion. (Least to greatest)
-        /// </summary>
         Health,
-
-        /// <summary>
-        /// Ordered by the maximum health of the minions. (Greatest to least)
-        /// </summary>
         MaxHealth
     }
 
-    /// <summary>
-    /// The team of the minion.
-    /// </summary>
     public enum MinionTeam
     {
-        /// <summary>
-        /// The minion is not on either team.
-        /// </summary>
         Neutral,
-
-        /// <summary>
-        /// The minions is an ally
-        /// </summary>
         Ally,
-
-        /// <summary>
-        /// The minions is an enemy
-        /// </summary>
         Enemy,
-
-        /// <summary>
-        /// The minion is not an ally
-        /// </summary>
         NotAlly,
-
-        /// <summary>
-        /// The minions is not an ally for the enemy
-        /// </summary>
         NotAllyForEnemy,
-
-        /// <summary>
-        /// Any minion.
-        /// </summary>
         All
     }
 
-    /// <summary>
-    /// The type of minion.
-    /// </summary>
     public enum MinionTypes
     {
-        /// <summary>
-        /// Ranged minions.
-        /// </summary>
         Ranged,
-
-        /// <summary>
-        /// Melee minions.
-        /// </summary>
         Melee,
-
-        /// <summary>
-        /// Any minion
-        /// </summary>
         All,
-
-        /// <summary>
-        /// Any wards. (TODO)
-        /// </summary>
-        [Obsolete("Wards have not been implemented yet in the minion manager.")]
-        Wards
+        Wards //TODO
     }
 
-    /// <summary>
-    /// Manages minions.
-    /// </summary>
     public static class MinionManager
     {
         /// <summary>
-        /// Gets minions based on range, type, team and then orders them.
+        ///     Returns the minions in range from From.
         /// </summary>
-        /// <param name="from">The point to get the minions from.</param>
-        /// <param name="range">The range.</param>
-        /// <param name="type">The type.</param>
-        /// <param name="team">The team.</param>
-        /// <param name="order">The order.</param>
-        /// <returns>List&lt;Obj_AI_Base&gt;.</returns>
         public static List<Obj_AI_Base> GetMinions(Vector3 from,
             float range,
             MinionTypes type = MinionTypes.All,
@@ -154,7 +84,7 @@ namespace LeagueSharp.Common
                 where
                     minion.IsMelee() && type == MinionTypes.Melee || !minion.IsMelee() && type == MinionTypes.Ranged ||
                     type == MinionTypes.All
-                where IsMinion(minion) || minionTeam == GameObjectTeam.Neutral && minion.MaxHealth > 5 && minion.IsHPBarRendered
+                where IsMinion(minion) || minionTeam == GameObjectTeam.Neutral
                 select minion).Cast<Obj_AI_Base>().ToList();
 
             switch (order)
@@ -163,21 +93,13 @@ namespace LeagueSharp.Common
                     result = result.OrderBy(o => o.Health).ToList();
                     break;
                 case MinionOrderTypes.MaxHealth:
-                    result = result.OrderByDescending(o => o.MaxHealth).ToList();
+                    result = result.OrderBy(o => o.MaxHealth).Reverse().ToList();
                     break;
             }
 
             return result;
         }
 
-        /// <summary>
-        /// Gets the minions.
-        /// </summary>
-        /// <param name="range">The range.</param>
-        /// <param name="type">The type.</param>
-        /// <param name="team">The team.</param>
-        /// <param name="order">The order.</param>
-        /// <returns>List&lt;Obj_AI_Base&gt;.</returns>
         public static List<Obj_AI_Base> GetMinions(float range,
             MinionTypes type = MinionTypes.All,
             MinionTeam team = MinionTeam.Enemy,
@@ -186,46 +108,20 @@ namespace LeagueSharp.Common
             return GetMinions(ObjectManager.Player.ServerPosition, range, type, team, order);
         }
 
-        /// <summary>
-        /// Determines whether the specified object is a minion.
-        /// </summary>
-        /// <param name="minion">The minion.</param>
-        /// <param name="includeWards">if set to <c>true</c> [include wards].</param>
-        /// <returns><c>true</c> if the specified minion is minion; otherwise, <c>false</c>.</returns>
         public static bool IsMinion(Obj_AI_Minion minion, bool includeWards = false)
         {
-            return minion.Name.Contains("Minion") || includeWards && IsWard(minion);
+            var name = minion.CharData.BaseSkinName.ToLower();
+            return name.Contains("minion") || includeWards && IsWard(name);
         }
 
-        /// <summary>
-        /// Determines whether the specified base skin name is ward.
-        /// </summary>
-        /// <param name="baseSkinName">Name of the base skin. Should be lowercase.</param>
-        /// <returns><c>true</c> if the specified base skin name is ward; otherwise, <c>false</c>.</returns>
-        [System.Obsolete("Use IsWard(Obj_AI_Minion)")]
         public static bool IsWard(string baseSkinName)
         {
-            return baseSkinName.Contains("ward");
-        }
-        
-        /// <summary>
-        /// Determines whether the specified minion is a valid attackable ward.
-        /// </summary>
-        /// <param name="minion">The minion you want to check for</param>
-        /// <returns><c>true</c> if the given minion is a valid attackable ward, otherwise returns <c>false</c>.</returns>
-        public static bool IsWard(Obj_AI_Minion minion)
-        {
-            return minion.Name.Contains("Ward") && minion.IsHPBarRendered;
+            return baseSkinName.Contains("ward") || baseSkinName.Contains("trinket");
         }
 
         /// <summary>
-        /// Returns the point where, when casted, the circular spell with hit the maximum amount of minions.
+        ///     Returns the point where, when casted, the circular spell with hit the maximum amount of minions.
         /// </summary>
-        /// <param name="minionPositions">The minion positions.</param>
-        /// <param name="width">The width.</param>
-        /// <param name="range">The range.</param>
-        /// <param name="useMECMax">The use mec maximum.</param>
-        /// <returns>FarmLocation.</returns>
         public static FarmLocation GetBestCircularFarmLocation(List<Vector2> minionPositions,
             float width,
             float range,
@@ -281,12 +177,8 @@ namespace LeagueSharp.Common
         }
 
         /// <summary>
-        /// Returns the point where, when casted, the linear spell with hit the maximum amount of minions.
+        ///     Returns the point where, when casted, the lineal spell with hit the maximum amount of minions.
         /// </summary>
-        /// <param name="minionPositions">The minion positions.</param>
-        /// <param name="width">The width.</param>
-        /// <param name="range">The range.</param>
-        /// <returns>FarmLocation.</returns>
         public static FarmLocation GetBestLineFarmLocation(List<Vector2> minionPositions, float width, float range)
         {
             var result = new Vector2();
@@ -328,19 +220,6 @@ namespace LeagueSharp.Common
             return new FarmLocation(result, minionCount);
         }
 
-        /// <summary>
-        /// Gets the minions predicted positions.
-        /// </summary>
-        /// <param name="minions">The minions.</param>
-        /// <param name="delay">The delay.</param>
-        /// <param name="width">The width.</param>
-        /// <param name="speed">The speed.</param>
-        /// <param name="from">From.</param>
-        /// <param name="range">The range.</param>
-        /// <param name="collision">if set to <c>true</c>, checks for collision.</param>
-        /// <param name="stype">The skillshot type.</param>
-        /// <param name="rangeCheckFrom">The position to check the range from.</param>
-        /// <returns>List&lt;Vector2&gt;.</returns>
         public static List<Vector2> GetMinionsPredictedPositions(List<Obj_AI_Base> minions,
             float delay,
             float width,
@@ -378,10 +257,8 @@ namespace LeagueSharp.Common
          */
 
         /// <summary>
-        /// Returns all the subgroup combinations that can be made from a group
+        ///     Returns all the subgroup combinations that can be made from a group
         /// </summary>
-        /// <param name="allValues">All values.</param>
-        /// <returns>List&lt;List&lt;Vector2&gt;&gt;.</returns>
         private static List<List<Vector2>> GetCombinations(List<Vector2> allValues)
         {
             var collection = new List<List<Vector2>>();
@@ -394,27 +271,11 @@ namespace LeagueSharp.Common
             return collection;
         }
 
-        /// <summary>
-        ///     A struct that represents the best position to cast a skillshot to hit the best number of minions, as well as the
-        ///     number of minions hit.
-        /// </summary>
         public struct FarmLocation
         {
-            /// <summary>
-            /// The minions hit
-            /// </summary>
             public int MinionsHit;
-
-            /// <summary>
-            /// The position
-            /// </summary>
             public Vector2 Position;
 
-            /// <summary>
-            /// Initializes a new instance of the <see cref="FarmLocation"/> struct.
-            /// </summary>
-            /// <param name="position">The position.</param>
-            /// <param name="minionsHit">The minions hit.</param>
             public FarmLocation(Vector2 position, int minionsHit)
             {
                 Position = position;

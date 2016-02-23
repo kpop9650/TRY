@@ -28,65 +28,35 @@ using SharpDX;
 
 namespace LeagueSharp.Common
 {
-    /// <summary>
-    /// Map information for Summoner's Rift
-    /// </summary>
     public static class SummonersRift
     {
-        /// <summary>
-        /// Gets the name of the map.
-        /// </summary>
-        /// <value>The name of the map.</value>
         public static string Name
         {
             get { return "Summoner's Rift"; }
         }
 
-        /// <summary>
-        /// Gets the short name of the map.
-        /// </summary>
-        /// <value>The short name of the map.</value>
         public static string ShortName
         {
             get { return "summonerRift"; }
         }
 
-        /// <summary>
-        /// Gets the map type.
-        /// </summary>
-        /// <value>The map type.</value>
         public static Utility.Map.MapType Type
         {
             get { return Utility.Map.MapType.SummonersRift; }
         }
 
-        /// <summary>
-        /// Gets the grid.
-        /// </summary>
-        /// <value>The grid.</value>
         public static Vector2 Grid
         {
             get { return new Vector2(13982, 14446); }
         }
 
-        /// <summary>
-        /// Gets the starting level.
-        /// </summary>
-        /// <value>The starting level.</value>
         public static int StartingLevel
         {
             get { return 1; }
         }
 
-        /// <summary>
-        /// Contains data about the top lane.
-        /// </summary>
         public static class TopLane
         {
-            /// <summary>
-            /// Gets the top zone.
-            /// </summary>
-            /// <value>The top zone.</value>
             public static Geometry.Polygon Top_Zone
             {
                 get
@@ -132,10 +102,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue zone.
-            /// </summary>
-            /// <value>The blue zone.</value>
             public static Geometry.Polygon Blue_Zone
             {
                 get
@@ -144,10 +110,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue side inhibitor zone.
-            /// </summary>
-            /// <value>The blue inhibitor zone.</value>
             public static Geometry.Polygon Blue_Inhib_Zone
             {
                 get
@@ -156,10 +118,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue side inner zone.
-            /// </summary>
-            /// <value>The blue inner zone.</value>
             public static Geometry.Polygon Blue_Inner_Zone
             {
                 get
@@ -169,10 +127,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the contest zone.
-            /// </summary>
-            /// <value>The contest zone.</value>
             public static Geometry.Polygon Contest_Zone
             {
                 get
@@ -210,10 +164,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the red zone.
-            /// </summary>
-            /// <value>The red zone.</value>
             public static Geometry.Polygon Red_Zone
             {
                 get
@@ -223,10 +173,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the red side inhibitor zone.
-            /// </summary>
-            /// <value>The red inhibitor zone.</value>
             public static Geometry.Polygon Red_Inhib_Zone
             {
                 get
@@ -235,10 +181,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the red side inner zone.
-            /// </summary>
-            /// <value>The red side inner zone.</value>
             public static Geometry.Polygon Red_Inner_Zone
             {
                 get
@@ -247,52 +189,29 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue side outer turret.
-            /// </summary>
-            /// <value>The blue outer turret.</value>
             public static Vector2 Blue_Outer_Turret
             {
                 get { return new Vector2(981, 10441); }
             }
 
-            /// <summary>
-            /// Gets the blue side inner turret.
-            /// </summary>
-            /// <value>The blue inner turret.</value>
             public static Vector2 Blue_Inner_Turret
             {
                 get { return new Vector2(1512, 6700); }
             }
 
-            /// <summary>
-            /// Gets the red side outer turret.
-            /// </summary>
-            /// <value>The red outer turret.</value>
             public static Vector2 Red_Outer_Turret
             {
                 get { return new Vector2(4318, 13876); }
             }
 
-            /// <summary>
-            /// Gets the redside inner turret.
-            /// </summary>
-            /// <value>The red inner turret.</value>
             public static Vector2 Red_Inner_Turret
             {
                 get { return new Vector2(7943, 13412); }
             }
         }
 
-        /// <summary>
-        /// Contains data about the middle lane.
-        /// </summary>
         public static class MidLane
         {
-            /// <summary>
-            /// Gets the middle lane zone.
-            /// </summary>
-            /// <value>The middle lane zone.</value>
             public static Geometry.Polygon Mid_Zone
             {
                 get
@@ -314,10 +233,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue side zone.
-            /// </summary>
-            /// <value>The blue side zone.</value>
             public static Geometry.Polygon Blue_Zone
             {
                 get
@@ -326,10 +241,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue side inhibitor zone.
-            /// </summary>
-            /// <value>The blue side inhibitor zone.</value>
             public static Geometry.Polygon Blue_Inhib_Zone
             {
                 get
@@ -338,10 +249,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue side inner zone.
-            /// </summary>
-            /// <value>The blue side inner zone.</value>
             public static Geometry.Polygon Blue_Inner_Zone
             {
                 get
@@ -351,10 +258,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the contest zone.
-            /// </summary>
-            /// <value>The contest zone.</value>
             public static Geometry.Polygon Contest_Zone
             {
                 get
@@ -376,10 +279,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the red side zone.
-            /// </summary>
-            /// <value>The red side zone.</value>
             public static Geometry.Polygon Red_Zone
             {
                 get
@@ -389,10 +288,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the red side inhibitor zone.
-            /// </summary>
-            /// <value>The red inhibitor zone.</value>
             public static Geometry.Polygon Red_Inhib_Zone
             {
                 get
@@ -401,10 +296,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the red side inner zone.
-            /// </summary>
-            /// <value>The red inner zone.</value>
             public static Geometry.Polygon Red_Inner_Zone
             {
                 get
@@ -413,52 +304,29 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue side outer turret position.
-            /// </summary>
-            /// <value>The blue side outer turret position.</value>
             public static Vector2 Blue_Outer_Turret
             {
                 get { return new Vector2(5846, 6396); }
             }
 
-            /// <summary>
-            /// Gets the blue side inner turret position.
-            /// </summary>
-            /// <value>The blue side inner turret position.</value>
             public static Vector2 Blue_Inner_Turret
             {
                 get { return new Vector2(5048, 4813); }
             }
 
-            /// <summary>
-            /// Gets the red side outer turret position.
-            /// </summary>
-            /// <value>The red side outer turret position.</value>
             public static Vector2 Red_Outer_Turret
             {
                 get { return new Vector2(8955, 8510); }
             }
 
-            /// <summary>
-            /// Gets the red side inner turret position.
-            /// </summary>
-            /// <value>The red side inner turret position.</value>
             public static Vector2 Red_Inner_Turret
             {
                 get { return new Vector2(9768, 10114); }
             }
         }
 
-        /// <summary>
-        /// Contrains data about the bottom lane.
-        /// </summary>
         public static class BottomLane
         {
-            /// <summary>
-            /// Gets the bottom lane zone.
-            /// </summary>
-            /// <value>The bottom lane zone.</value>
             public static Geometry.Polygon Bottom_Zone
             {
                 get
@@ -503,11 +371,7 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue zone.
-            /// </summary>
-            /// <value>The blue zone.</value>
-            public static Geometry.Polygon Blue_Zone
+            private static Geometry.Polygon Blue_Zone
             {
                 get
                 {
@@ -515,11 +379,7 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue inhib zone.
-            /// </summary>
-            /// <value>The blue inhib zone.</value>
-            public static Geometry.Polygon Blue_Inhib_Zone
+            private static Geometry.Polygon Blue_Inhib_Zone
             {
                 get
                 {
@@ -527,11 +387,7 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue inner zone.
-            /// </summary>
-            /// <value>The blue inner zone.</value>
-            public static Geometry.Polygon Blue_Inner_Zone
+            private static Geometry.Polygon Blue_Inner_Zone
             {
                 get
                 {
@@ -540,11 +396,7 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the contest zone.
-            /// </summary>
-            /// <value>The contest zone.</value>
-            public static Geometry.Polygon Contest_Zone
+            private static Geometry.Polygon Contest_Zone
             {
                 get
                 {
@@ -583,11 +435,7 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the red zone.
-            /// </summary>
-            /// <value>The red zone.</value>
-            public static Geometry.Polygon Red_Zone
+            private static Geometry.Polygon Red_Zone
             {
                 get
                 {
@@ -596,11 +444,7 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the red inhib zone.
-            /// </summary>
-            /// <value>The red inhib zone.</value>
-            public static Geometry.Polygon Red_Inhib_Zone
+            private static Geometry.Polygon Red_Inhib_Zone
             {
                 get
                 {
@@ -608,11 +452,7 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the red inner zone.
-            /// </summary>
-            /// <value>The red inner zone.</value>
-            public static Geometry.Polygon Red_Inner_Zone
+            private static Geometry.Polygon Red_Inner_Zone
             {
                 get
                 {
@@ -620,52 +460,29 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue outer turret.
-            /// </summary>
-            /// <value>The blue outer turret.</value>
             public static Vector2 Blue_Outer_Turret
             {
                 get { return new Vector2(10504, 1030); }
             }
 
-            /// <summary>
-            /// Gets the blue inner turret.
-            /// </summary>
-            /// <value>The blue inner turret.</value>
             public static Vector2 Blue_Inner_Turret
             {
                 get { return new Vector2(6919, 1484); }
             }
 
-            /// <summary>
-            /// Gets the red outer turret.
-            /// </summary>
-            /// <value>The red outer turret.</value>
             public static Vector2 Red_Outer_Turret
             {
                 get { return new Vector2(13866, 4505); }
             }
 
-            /// <summary>
-            /// Gets the red inner turret.
-            /// </summary>
-            /// <value>The red inner turret.</value>
             public static Vector2 Red_Inner_Turret
             {
                 get { return new Vector2(13328, 8226); }
             }
         }
 
-        /// <summary>
-        /// Contains data about the bases.
-        /// </summary>
         public static class Base
         {
-            /// <summary>
-            /// Gets the blue base zone.
-            /// </summary>
-            /// <value>The blue base zone.</value>
             public static Geometry.Polygon Blue_Base_Zone
             {
                 get
@@ -681,10 +498,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the red base zone.
-            /// </summary>
-            /// <value>The red base zone.</value>
             public static Geometry.Polygon Red_Base_Zone
             {
                 get
@@ -717,196 +530,109 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue top turret.
-            /// </summary>
-            /// <value>the blue top turret.</value>
             public static Vector2 Blue_Top_Turret
             {
                 get { return new Vector2(1170, 4288); }
             }
 
-            /// <summary>
-            /// Gets the blue mid turret.
-            /// </summary>
-            /// <value>the blue mid turret.</value>
             public static Vector2 Blue_Mid_Turret
             {
                 get { return new Vector2(3652, 3696); }
             }
 
-            /// <summary>
-            /// Gets the blue bottom turret.
-            /// </summary>
-            /// <value>the blue bottom turret.</value>
             public static Vector2 Blue_Bottom_Turret
             {
                 get { return new Vector2(4282, 1254); }
             }
 
-            /// <summary>
-            /// Gets the blue top inhibitor.
-            /// </summary>
-            /// <value>the blue top inhibitor.</value>
             public static Vector2 Blue_Top_Inhibitor
             {
                 get { return new Vector2(1170, 3570); }
             }
 
-            /// <summary>
-            /// Gets the blue mid inhibitor.
-            /// </summary>
-            /// <value>the blue mid inhibitor.</value>
             public static Vector2 Blue_Mid_Inhibitor
             {
                 get { return new Vector2(3204, 3204); }
             }
 
-            /// <summary>
-            /// Gets the blue bottom inhibitor.
-            /// </summary>
-            /// <value>the blue bottom inhibitor.</value>
             public static Vector2 Blue_Bottom_Inhibitor
             {
                 get { return new Vector2(3453, 1237); }
             }
 
-            /// <summary>
-            /// Gets the blue top nexus turret.
-            /// </summary>
-            /// <value>the blue top nexus turret.</value>
             public static Vector2 Blue_Top_Nexus_Turret
             {
                 get { return new Vector2(1748, 2270); }
             }
 
-            /// <summary>
-            /// Gets the blue bottom nexus turret.
-            /// </summary>
-            /// <value>the blue bottom nexus turret.</value>
             public static Vector2 Blue_Bottom_Nexus_Turret
             {
                 get { return new Vector2(2178, 1808); }
             }
 
-            /// <summary>
-            /// Gets the blue nexus.
-            /// </summary>
-            /// <value>the blue nexus.</value>
             public static Vector2 Blue_Nexus
             {
                 get { return new Vector2(1550, 1660); }
             }
 
-            /// <summary>
-            /// Gets the blue spawn.
-            /// </summary>
-            /// <value>the blue spawn.</value>
             public static Geometry.Polygon Blue_Spawn
             {
                 get { return new Geometry.Polygon.Circle(new Vector2(450, 500), 800); }
             }
 
-            /// <summary>
-            /// Gets the red top turret.
-            /// </summary>
-            /// <value>the red top turret.</value>
             public static Vector2 Red_Top_Turret
             {
                 get { return new Vector2(10481, 13650); }
             }
 
-            /// <summary>
-            /// Gets the red mid turret.
-            /// </summary>
-            /// <value>the red mid turret.</value>
             public static Vector2 Red_Mid_Turret
             {
                 get { return new Vector2(11135, 11208); }
             }
 
-            /// <summary>
-            /// Gets the red bottom turret.
-            /// </summary>
-            /// <value>the red bottom turret.</value>
             public static Vector2 Red_Bottom_Turret
             {
                 get { return new Vector2(13625, 10573); }
             }
 
-            /// <summary>
-            /// Gets the red top inhibitor.
-            /// </summary>
-            /// <value>the red top inhibitor.</value>
             public static Vector2 Red_Top_Inhibitor
             {
                 get { return new Vector2(11262, 13677); }
             }
 
-            /// <summary>
-            /// Gets the red mid inhibitor.
-            /// </summary>
-            /// <value>the red mid inhibitor.</value>
             public static Vector2 Red_Mid_Inhibitor
             {
                 get { return new Vector2(11598, 11668); }
             }
 
-            /// <summary>
-            /// Gets the red bottom inhibitor.
-            /// </summary>
-            /// <value>the red bottom inhibitor.</value>
             public static Vector2 Red_Bottom_Inhibitor
             {
                 get { return new Vector2(13605, 11316); }
             }
 
-            /// <summary>
-            /// Gets the red top nexus turret.
-            /// </summary>
-            /// <value>the red top nexus turret.</value>
             public static Vector2 Red_Top_Nexus_Turret
             {
                 get { return new Vector2(12612, 13084); }
             }
 
-            /// <summary>
-            /// Gets the red bottom nexus turret.
-            /// </summary>
-            /// <value>the red bottom nexus turret.</value>
             public static Vector2 Red_Bottom_Nexus_Turret
             {
                 get { return new Vector2(13053, 12612); }
             }
 
-            /// <summary>
-            /// Gets the red nexus.
-            /// </summary>
-            /// <value>the red nexus.</value>
             public static Vector2 Red_Nexus
             {
                 get { return new Vector2(13243, 13235); }
             }
 
-            /// <summary>
-            /// Gets the red spawn.
-            /// </summary>
-            /// <value>the red spawn.</value>
             public static Geometry.Polygon Red_Spawn
             {
                 get { return new Geometry.Polygon.Circle(new Vector2(14300, 14400), 800); }
             }
         }
 
-        /// <summary>
-        /// Gets data about the jungle.
-        /// </summary>
         public static class Jungle
         {
-            /// <summary>
-            /// Gets the blue top jungle.
-            /// </summary>
-            /// <value>the blue top jungle.</value>
             public static Geometry.Polygon Blue_Top_Jungle
             {
                 get
@@ -933,10 +659,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue bottom jungle.
-            /// </summary>
-            /// <value>the blue bottom jungle.</value>
             public static Geometry.Polygon Blue_Bottom_Jungle
             {
                 get
@@ -968,10 +690,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the red top jungle.
-            /// </summary>
-            /// <value>the red top jungle.</value>
             public static Geometry.Polygon Red_Top_Jungle
             {
                 get
@@ -1005,10 +723,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the red bottom jungle.
-            /// </summary>
-            /// <value>the red bottom jungle.</value>
             public static Geometry.Polygon Red_Bottom_Jungle
             {
                 get
@@ -1041,124 +755,69 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue blue buff.
-            /// </summary>
-            /// <value>the blue blue buff.</value>
             public static Vector2 Blue_BlueBuff
             {
                 get { return new Vector2(3910, 7920); }
             }
 
-            /// <summary>
-            /// Gets the red blue buff.
-            /// </summary>
-            /// <value>the red blue buff.</value>
             public static Vector2 Red_BlueBuff
             {
                 get { return new Vector2(10830, 7000); }
             }
 
-            /// <summary>
-            /// Gets the blue red buff.
-            /// </summary>
-            /// <value>the blue red buff.</value>
             public static Vector2 Blue_RedBuff
             {
                 get { return new Vector2(7890, 4120); }
             }
 
-            /// <summary>
-            /// Gets the red red buff.
-            /// </summary>
-            /// <value>the red red buff.</value>
             public static Vector2 Red_RedBuff
             {
                 get { return new Vector2(6980, 10760); }
             }
 
-            /// <summary>
-            /// Gets the blue razor beak.
-            /// </summary>
-            /// <value>the blue razor beak.</value>
             public static Vector2 Blue_RazorBeak
             {
                 get { return new Vector2(6830, 5458); }
             }
 
-            /// <summary>
-            /// Gets the blue gromp.
-            /// </summary>
-            /// <value>the blue gromp.</value>
             public static Vector2 Blue_Gromp
             {
                 get { return new Vector2(2090, 8428); }
             }
 
-            /// <summary>
-            /// Gets the blue krug.
-            /// </summary>
-            /// <value>the blue krug.</value>
             public static Vector2 Blue_Krug
             {
                 get { return new Vector2(8400, 2740); }
             }
 
-            /// <summary>
-            /// Gets the blue wolf.
-            /// </summary>
-            /// <value>the blue wolf.</value>
             public static Vector2 Blue_Wolf
             {
                 get { return new Vector2(3781, 6444); }
             }
 
-            /// <summary>
-            /// Gets the red razor beak.
-            /// </summary>
-            /// <value>the red razor beak.</value>
             public static Vector2 Red_RazorBeak
             {
                 get { return new Vector2(7800, 9460); }
             }
 
-            /// <summary>
-            /// Gets the red gromp.
-            /// </summary>
-            /// <value>the red gromp.</value>
             public static Vector2 Red_Gromp
             {
                 get { return new Vector2(12704, 6444); }
             }
 
-            /// <summary>
-            /// Gets the red krug.
-            /// </summary>
-            /// <value>the red krug.</value>
             public static Vector2 Red_Krug
             {
                 get { return new Vector2(6400, 12150); }
             }
 
-            /// <summary>
-            /// Gets the red wolf.
-            /// </summary>
-            /// <value>the red wolf.</value>
             public static Vector2 Red_Wolf
             {
                 get { return new Vector2(11000, 8380); }
             }
         }
 
-        /// <summary>
-        /// Class River.
-        /// </summary>
         public static class River
         {
-            /// <summary>
-            /// Gets the top.
-            /// </summary>
-            /// <value>The top.</value>
             public static Geometry.Polygon Top
             {
                 get
@@ -1199,10 +858,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom.
-            /// </summary>
-            /// <value>The bottom.</value>
             public static Geometry.Polygon Bottom
             {
                 get
@@ -1243,28 +898,16 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the dragon.
-            /// </summary>
-            /// <value>The dragon.</value>
             public static Vector2 Dragon
             {
                 get { return new Vector2(9860, 4410); }
             }
 
-            /// <summary>
-            /// Gets the dragon pit.
-            /// </summary>
-            /// <value>the dragon pit.</value>
             public static Geometry.Polygon Dragon_Pit
             {
                 get { return new Geometry.Polygon.Circle(new Vector2(9900, 4400), 650); }
             }
 
-            /// <summary>
-            /// Gets the dragon contest zone.
-            /// </summary>
-            /// <value>the dragon contest_ zone.</value>
             public static Geometry.Polygon Dragon_Contest_Zone
             {
                 get
@@ -1290,28 +933,16 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the baron.
-            /// </summary>
-            /// <value>The baron.</value>
             public static Vector2 Baron
             {
                 get { return new Vector2(4950, 10400); }
             }
 
-            /// <summary>
-            /// Gets the baron pit.
-            /// </summary>
-            /// <value>the baron pit.</value>
             public static Geometry.Polygon Baron_Pit
             {
                 get { return new Geometry.Polygon.Circle(new Vector2(4950, 10400), 650); }
             }
 
-            /// <summary>
-            /// Gets the baron contest zone.
-            /// </summary>
-            /// <value>the baron contest zone.</value>
             public static Geometry.Polygon Baron_Contest_Zone
             {
                 get
@@ -1335,15 +966,8 @@ namespace LeagueSharp.Common
             }
         }
 
-        /// <summary>
-        /// Class Bushes.
-        /// </summary>
         public static class Bushes
         {
-            /// <summary>
-            /// Gets the top lane blue inner bush.
-            /// </summary>
-            /// <value>The top lane blue inner bush.</value>
             public static Geometry.Polygon TopLane_BlueInnerBush
             {
                 get
@@ -1367,10 +991,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top lane contest blue bush.
-            /// </summary>
-            /// <value>The top lane contest blue bush.</value>
             public static Geometry.Polygon TopLane_ContestBlueBush
             {
                 get
@@ -1402,11 +1022,7 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top lane contest middle bush.
-            /// </summary>
-            /// <value>The top lane contest middle bush.</value>
-            public static Geometry.Polygon TopLane_ContestMiddleBush
+            public static Geometry.Polygon TopLane_ConetestMiddleBush
             {
                 get
                 {
@@ -1459,10 +1075,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top lane contest red bush.
-            /// </summary>
-            /// <value>The top lane contest red bush.</value>
             public static Geometry.Polygon TopLane_ContestRedBush
             {
                 get
@@ -1510,10 +1122,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top lane red inner bush.
-            /// </summary>
-            /// <value>The top lane red inner bush.</value>
             public static Geometry.Polygon TopLane_RedInnerBush
             {
                 get
@@ -1533,10 +1141,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom lane blue inner bush.
-            /// </summary>
-            /// <value>The bottom lane blue inner bush.</value>
             public static Geometry.Polygon BottomLane_BlueInnerBush
             {
                 get
@@ -1552,10 +1156,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom lane contest blue bush.
-            /// </summary>
-            /// <value>The bottom lane contest blue bush.</value>
             public static Geometry.Polygon BottomLane_ContestBlueBush
             {
                 get
@@ -1625,10 +1225,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom lane contest red bush.
-            /// </summary>
-            /// <value>The bottom lane contest red bush.</value>
             public static Geometry.Polygon BottomLane_ContestRedBush
             {
                 get
@@ -1692,10 +1288,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom lane red inner bush.
-            /// </summary>
-            /// <value>The bottom lane red inner bush.</value>
             public static Geometry.Polygon BottomLane_RedInnerBush
             {
                 get
@@ -1715,10 +1307,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top river top bush.
-            /// </summary>
-            /// <value>The top river top bush.</value>
             public static Geometry.Polygon TopRiver_TopBush
             {
                 get
@@ -1762,10 +1350,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top river middle bush.
-            /// </summary>
-            /// <value>The top river middle bush.</value>
             public static Geometry.Polygon TopRiver_MiddleBush
             {
                 get
@@ -1787,10 +1371,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top river bottom bush.
-            /// </summary>
-            /// <value>The top river bottom bush.</value>
             public static Geometry.Polygon TopRiver_BottomBush
             {
                 get
@@ -1852,10 +1432,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom river top bush.
-            /// </summary>
-            /// <value>The bottom river top bush.</value>
             public static Geometry.Polygon BottomRiver_TopBush
             {
                 get
@@ -1917,10 +1493,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom river middle bush.
-            /// </summary>
-            /// <value>The bottom river middle bush.</value>
             public static Geometry.Polygon BottomRiver_MiddleBush
             {
                 get
@@ -1946,10 +1518,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom river bottom bush.
-            /// </summary>
-            /// <value>The bottom river bottom bush.</value>
             public static Geometry.Polygon BottomRiver_BottomBush
             {
                 get
@@ -1977,10 +1545,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top blue jungle tri bush.
-            /// </summary>
-            /// <value>The top blue jungle tri bush.</value>
             public static Geometry.Polygon TopBlueJungle_TriBush
             {
                 get
@@ -2008,10 +1572,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top blue jungle blue buff bush.
-            /// </summary>
-            /// <value>The top blue jungle blue buff bush.</value>
             public static Geometry.Polygon TopBlueJungle_BlueBuffBush
             {
                 get
@@ -2029,10 +1589,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top blue jungle river entrance bush.
-            /// </summary>
-            /// <value>The top blue jungle river entrance bush.</value>
             public static Geometry.Polygon TopBlueJungle_RiverEntranceBush
             {
                 get
@@ -2060,10 +1616,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top blue jungle wolf bush.
-            /// </summary>
-            /// <value>The top blue jungle wolf bush.</value>
             public static Geometry.Polygon TopBlueJungle_WolfBush
             {
                 get
@@ -2089,10 +1641,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom blue jungle raptor bush.
-            /// </summary>
-            /// <value>The bottom blue jungle raptor bush.</value>
             public static Geometry.Polygon BottomBlueJungle_RaptorBush
             {
                 get
@@ -2114,10 +1662,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom blue jungle near base bush.
-            /// </summary>
-            /// <value>The bottom blue jungle near base bush.</value>
             public static Geometry.Polygon BottomBlueJungle_NearBaseBush
             {
                 get
@@ -2134,10 +1678,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom blue jungle red bush1.
-            /// </summary>
-            /// <value>The bottom blue jungle red bush1.</value>
             public static Geometry.Polygon BottomBlueJungle_RedBush1
             {
                 get
@@ -2159,10 +1699,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom blue jungle red bush.
-            /// </summary>
-            /// <value>The bottom blue jungle red bush.</value>
             public static Geometry.Polygon BottomBlueJungle_RedBush
             {
                 get
@@ -2190,10 +1726,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom blue jungle bihinde dragon.
-            /// </summary>
-            /// <value>The bottom blue jungle bihinde dragon.</value>
             public static Geometry.Polygon BottomBlueJungle_BihindeDragon
             {
                 get
@@ -2217,10 +1749,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom blue jungle tri bush.
-            /// </summary>
-            /// <value>The bottom blue jungle tri bush.</value>
             public static Geometry.Polygon BottomBlueJungle_TriBush
             {
                 get
@@ -2246,10 +1774,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom blue jungle krug bush.
-            /// </summary>
-            /// <value>The bottom blue jungle krug bush.</value>
             public static Geometry.Polygon BottomBlueJungle_KrugBush
             {
                 get
@@ -2277,10 +1801,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle tri bush.
-            /// </summary>
-            /// <value>The top red jungle tri bush.</value>
             public static Geometry.Polygon TopRedJungle_TriBush
             {
                 get
@@ -2314,10 +1834,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle krug bush.
-            /// </summary>
-            /// <value>The top red jungle krug bush.</value>
             public static Geometry.Polygon TopRedJungle_KrugBush
             {
                 get
@@ -2347,11 +1863,7 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle behind baron bush.
-            /// </summary>
-            /// <value>The top red jungle behind baron bush.</value>
-            public static Geometry.Polygon TopRedJungle_BehindBaronBush
+            public static Geometry.Polygon TopRedJungle_BihindeBaronBush
             {
                 get
                 {
@@ -2374,10 +1886,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle red bush.
-            /// </summary>
-            /// <value>The top red jungle red bush.</value>
             public static Geometry.Polygon TopRedJungle_RedBush
             {
                 get
@@ -2417,10 +1925,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle red bush1.
-            /// </summary>
-            /// <value>The top red jungle red bush1.</value>
             public static Geometry.Polygon TopRedJungle_RedBush1
             {
                 get
@@ -2444,10 +1948,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle near base bush.
-            /// </summary>
-            /// <value>The top red jungle near base bush.</value>
             public static Geometry.Polygon TopRedJungle_NearBaseBush
             {
                 get
@@ -2463,10 +1963,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle raptor bush.
-            /// </summary>
-            /// <value>The top red jungle raptor bush.</value>
             public static Geometry.Polygon TopRedJungle_RaptorBush
             {
                 get
@@ -2484,10 +1980,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom red jungle wolf bush.
-            /// </summary>
-            /// <value>The bottom red jungle wolf bush.</value>
             public static Geometry.Polygon BottomRedJungle_WolfBush
             {
                 get
@@ -2511,10 +2003,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom red jungle blue buff bush.
-            /// </summary>
-            /// <value>The bottom red jungle blue buff bush.</value>
             public static Geometry.Polygon BottomRedJungle_BlueBuffBush
             {
                 get
@@ -2530,10 +2018,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom red jungle tri bush.
-            /// </summary>
-            /// <value>The bottom red jungle tri bush.</value>
             public static Geometry.Polygon BottomRedJungle_TriBush
             {
                 get
@@ -2563,10 +2047,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom red jungle river entrance bush.
-            /// </summary>
-            /// <value>The bottom red jungle river entrance bush.</value>
             public static Geometry.Polygon BottomRedJungle_RiverEntranceBush
             {
                 get
@@ -2601,15 +2081,8 @@ namespace LeagueSharp.Common
             }
         }
 
-        /// <summary>
-        /// Class Walls.
-        /// </summary>
         public static class Walls
         {
-            /// <summary>
-            /// Gets the dragon wall.
-            /// </summary>
-            /// <value>The dragon wall.</value>
             public static Geometry.Polygon DragonWall
             {
                 get
@@ -2843,10 +2316,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the baron wall.
-            /// </summary>
-            /// <value>The baron wall.</value>
             public static Geometry.Polygon BaronWall
             {
                 get
@@ -3126,10 +2595,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue base top wall.
-            /// </summary>
-            /// <value>The blue base top wall.</value>
             public static Geometry.Polygon BlueBaseTopWall
             {
                 get
@@ -3205,10 +2670,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue base bottom wall.
-            /// </summary>
-            /// <value>The blue base bottom wall.</value>
             public static Geometry.Polygon BlueBaseBottomWall
             {
                 get
@@ -3282,10 +2743,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the red base top wall.
-            /// </summary>
-            /// <value>The red base top wall.</value>
             public static Geometry.Polygon RedBaseTopWall
             {
                 get
@@ -3347,10 +2804,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the red base bottom wall.
-            /// </summary>
-            /// <value>The red base bottom wall.</value>
             public static Geometry.Polygon RedBaseBottomWall
             {
                 get
@@ -3434,10 +2887,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top blue jungle wall 1.
-            /// </summary>
-            /// <value>The top blue jungle wall 1.</value>
             public static Geometry.Polygon TopBlueJungle_Wall_1
             {
                 get
@@ -3619,10 +3068,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top blue jungle wall 2.
-            /// </summary>
-            /// <value>The top blue jungle wall 2.</value>
             public static Geometry.Polygon TopBlueJungle_Wall_2
             {
                 get
@@ -3728,10 +3173,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top blue jungle gromp wall.
-            /// </summary>
-            /// <value>The top blue jungle gromp wall.</value>
             public static Geometry.Polygon TopBlueJungle_GrompWall
             {
                 get
@@ -3831,10 +3272,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top blue jungle wall 3.
-            /// </summary>
-            /// <value>The top blue jungle wall 3.</value>
             public static Geometry.Polygon TopBlueJungle_Wall_3
             {
                 get
@@ -3968,10 +3405,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top blue jungle wolf wall.
-            /// </summary>
-            /// <value>The top blue jungle wolf wall.</value>
             public static Geometry.Polygon TopBlueJungle_WolfWall
             {
                 get
@@ -4065,10 +3498,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top blue jungle wall 4.
-            /// </summary>
-            /// <value>The top blue jungle wall 4.</value>
             public static Geometry.Polygon TopBlueJungle_Wall_4
             {
                 get
@@ -4222,10 +3651,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top blue jungle wall 5.
-            /// </summary>
-            /// <value>The top blue jungle wall 5.</value>
             public static Geometry.Polygon TopBlueJungle_Wall_5
             {
                 get
@@ -4291,10 +3716,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top blue jungle blue buff wall.
-            /// </summary>
-            /// <value>The top blue jungle blue buff wall.</value>
             public static Geometry.Polygon TopBlueJungle_BlueBuffWall
             {
                 get
@@ -4462,10 +3883,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the red mid wall 1.
-            /// </summary>
-            /// <value>The red mid wall 1.</value>
             public static Geometry.Polygon RedMid_Wall_1
             {
                 get
@@ -4581,10 +3998,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the red mid wall 2.
-            /// </summary>
-            /// <value>The red mid wall 2.</value>
             public static Geometry.Polygon RedMid_Wall_2
             {
                 get
@@ -4700,10 +4113,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue mid wall 1.
-            /// </summary>
-            /// <value>The blue mid wall 1.</value>
             public static Geometry.Polygon BlueMid_Wall_1
             {
                 get
@@ -4842,10 +4251,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the blue mid wall 2.
-            /// </summary>
-            /// <value>The blue mid wall 2.</value>
             public static Geometry.Polygon BlueMid_Wall_2
             {
                 get
@@ -4933,10 +4338,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom blue jungle wall 1.
-            /// </summary>
-            /// <value>The bottom blue jungle wall 1.</value>
             public static Geometry.Polygon BottomBlueJungle_Wall_1
             {
                 get
@@ -5042,10 +4443,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom blue jungle wall 2.
-            /// </summary>
-            /// <value>The bottom blue jungle wall 2.</value>
             public static Geometry.Polygon BottomBlueJungle_Wall_2
             {
                 get
@@ -5113,10 +4510,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom blue jungle wall 3.
-            /// </summary>
-            /// <value>The bottom blue jungle wall 3.</value>
             public static Geometry.Polygon BottomBlueJungle_Wall_3
             {
                 get
@@ -5164,10 +4557,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom blue jungle wall 4.
-            /// </summary>
-            /// <value>The bottom blue jungle wall 4.</value>
             public static Geometry.Polygon BottomBlueJungle_Wall_4
             {
                 get
@@ -5245,10 +4634,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom blue jungle wall 5.
-            /// </summary>
-            /// <value>The bottom blue jungle wall 5.</value>
             public static Geometry.Polygon BottomBlueJungle_Wall_5
             {
                 get
@@ -5334,10 +4719,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom blue jungle wall 6.
-            /// </summary>
-            /// <value>The bottom blue jungle wall 6.</value>
             public static Geometry.Polygon BottomBlueJungle_Wall_6
             {
                 get
@@ -5447,10 +4828,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom blue jungle raptor wall.
-            /// </summary>
-            /// <value>The bottom blue jungle raptor wall.</value>
             public static Geometry.Polygon BottomBlueJungle_RaptorWall
             {
                 get
@@ -5572,10 +4949,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom blue jungle red buff wall.
-            /// </summary>
-            /// <value>The bottom blue jungle red buff wall.</value>
             public static Geometry.Polygon BottomBlueJungle_RedBuffWall
             {
                 get
@@ -5681,10 +5054,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom blue jungle krug wall.
-            /// </summary>
-            /// <value>The bottom blue jungle krug wall.</value>
             public static Geometry.Polygon BottomBlueJungle_KrugWall
             {
                 get
@@ -5834,10 +5203,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle wall 1.
-            /// </summary>
-            /// <value>The top red jungle wall 1.</value>
             public static Geometry.Polygon TopRedJungle_Wall_1
             {
                 get
@@ -5945,10 +5310,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle wall 2.
-            /// </summary>
-            /// <value>The top red jungle wall 2.</value>
             public static Geometry.Polygon TopRedJungle_Wall_2
             {
                 get
@@ -6014,10 +5375,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle wall 3.
-            /// </summary>
-            /// <value>The top red jungle wall 3.</value>
             public static Geometry.Polygon TopRedJungle_Wall_3
             {
                 get
@@ -6059,10 +5416,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle wall 4.
-            /// </summary>
-            /// <value>The top red jungle wall 4.</value>
             public static Geometry.Polygon TopRedJungle_Wall_4
             {
                 get
@@ -6160,10 +5513,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle wall 5.
-            /// </summary>
-            /// <value>The top red jungle wall 5.</value>
             public static Geometry.Polygon TopRedJungle_Wall_5
             {
                 get
@@ -6235,10 +5584,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle wall 6.
-            /// </summary>
-            /// <value>The top red jungle wall 6.</value>
             public static Geometry.Polygon TopRedJungle_Wall_6
             {
                 get
@@ -6342,10 +5687,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle wall 7.
-            /// </summary>
-            /// <value>The top red jungle wall 7.</value>
             public static Geometry.Polygon TopRedJungle_Wall_7
             {
                 get
@@ -6435,10 +5776,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle krug wall.
-            /// </summary>
-            /// <value>The top red jungle krug wall.</value>
             public static Geometry.Polygon TopRedJungle_KrugWall
             {
                 get
@@ -6604,10 +5941,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle red buff wall.
-            /// </summary>
-            /// <value>The top red jungle red buff wall.</value>
             public static Geometry.Polygon TopRedJungle_RedBuffWall
             {
                 get
@@ -6727,10 +6060,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the top red jungle raptor wall.
-            /// </summary>
-            /// <value>The top red jungle raptor wall.</value>
             public static Geometry.Polygon TopRedJungle_RaptorWall
             {
                 get
@@ -6872,10 +6201,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom red jungle wall 1.
-            /// </summary>
-            /// <value>The bottom red jungle wall 1.</value>
             public static Geometry.Polygon BottomRedJungle_Wall_1
             {
                 get
@@ -7065,10 +6390,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom red jungle wall 2.
-            /// </summary>
-            /// <value>The bottom red jungle wall 2.</value>
             public static Geometry.Polygon BottomRedJungle_Wall_2
             {
                 get
@@ -7180,10 +6501,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom red jungle wall 3.
-            /// </summary>
-            /// <value>The bottom red jungle wall 3.</value>
             public static Geometry.Polygon BottomRedJungle_Wall_3
             {
                 get
@@ -7287,10 +6604,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom red jungle wall 4.
-            /// </summary>
-            /// <value>The bottom red jungle wall 4.</value>
             public static Geometry.Polygon BottomRedJungle_Wall_4
             {
                 get
@@ -7450,10 +6763,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom red jungle wall 5.
-            /// </summary>
-            /// <value>The bottom red jungle wall 5.</value>
             public static Geometry.Polygon BottomRedJungle_Wall_5
             {
                 get
@@ -7543,10 +6852,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom red jungle grom wall.
-            /// </summary>
-            /// <value>The bottom red jungle grom wall.</value>
             public static Geometry.Polygon BottomRedJungle_GromWall
             {
                 get
@@ -7682,10 +6987,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom red jungle blue buff wall.
-            /// </summary>
-            /// <value>The bottom red jungle blue buff wall.</value>
             public static Geometry.Polygon BottomRedJungle_BlueBuffWall
             {
                 get
@@ -7847,10 +7148,6 @@ namespace LeagueSharp.Common
                 }
             }
 
-            /// <summary>
-            /// Gets the bottom red jungle wolf wall.
-            /// </summary>
-            /// <value>The bottom red jungle wolf wall.</value>
             public static Geometry.Polygon BottomRedJungle_WolfWall
             {
                 get

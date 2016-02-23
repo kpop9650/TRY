@@ -30,112 +30,37 @@ using SharpDX;
 
 namespace LeagueSharp.Common
 {
-    using System.Diagnostics.CodeAnalysis;
-
-    /// <summary>
-    /// The delegate for the <see cref="AntiGapcloser.OnEnemyGapcloser"/> event.
-    /// </summary>
-    /// <param name="gapcloser">The gapcloser.</param>
     public delegate void OnGapcloseH(ActiveGapcloser gapcloser);
 
-    /// <summary>
-    /// The type of gapcloser.
-    /// </summary>
     public enum GapcloserType
     {
-        /// <summary>
-        /// The gapcloser used a skillshot ability.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly",
-            Justification = "Reviewed. Suppression is OK here.")]
         Skillshot,
-
-        /// <summary>
-        /// The gapcloser used a targeted ability.
-        /// </summary>
         Targeted
     }
 
-    /// <summary>
-    /// Represents a gapcloser.
-    /// </summary>
     public struct Gapcloser
     {
-        /// <summary>
-        /// The champion name
-        /// </summary>
         public string ChampionName;
-
-        /// <summary>
-        /// The skill type
-        /// </summary>
         public GapcloserType SkillType;
-
-        /// <summary>
-        /// The slot
-        /// </summary>
         public SpellSlot Slot;
-
-        /// <summary>
-        /// The spell name
-        /// </summary>
         public string SpellName;
     }
 
-    /// <summary>
-    /// Represents an active gapcloser.
-    /// </summary>
     public struct ActiveGapcloser
     {
-        /// <summary>
-        /// The end
-        /// </summary>
         public Vector3 End;
-
-        /// <summary>
-        /// The sender
-        /// </summary>
         public Obj_AI_Hero Sender;
-
-        /// <summary>
-        /// The skill type
-        /// </summary>
         public GapcloserType SkillType;
-
-        /// <summary>
-        /// The start
-        /// </summary>
         public Vector3 Start;
-
-        /// <summary>
-        /// The tick count
-        /// </summary>
         public int TickCount;
-
-        /// <summary>
-        /// The slot
-        /// </summary>
         public SpellSlot Slot;
     }
 
-    /// <summary>
-    /// Provides events and information about gapclosers.
-    /// </summary>
     public static class AntiGapcloser
     {
-        /// <summary>
-        /// The gapcloser spells
-        /// </summary>
         public static List<Gapcloser> Spells = new List<Gapcloser>();
-
-        /// <summary>
-        /// The active gapclosers
-        /// </summary>
         public static List<ActiveGapcloser> ActiveGapclosers = new List<ActiveGapcloser>();
 
-        /// <summary>
-        /// Initializes static members of the <see cref="AntiGapcloser"/> class. 
-        /// </summary>
         static AntiGapcloser()
         {
             #region Aatrox
@@ -202,26 +127,6 @@ namespace LeagueSharp.Common
                 });
 
             #endregion
-            
-            #region Ekko
-            Spells.Add(
-                new Gapcloser
-                {
-                    ChampionName = "Ekko",
-                    Slot = SpellSlot.E,
-                    SpellName = "ekkoe",
-                    SkillType = GapcloserType.Skillshot
-                });
-	
-            Spells.Add(
-                new Gapcloser
-                {
-                    ChampionName = "Ekko",
-                    Slot = SpellSlot.E,
-                    SpellName = "ekkoeattack",
-                    SkillType = GapcloserType.Targeted
-                });
-            #endregion
 
             #region Elise
 
@@ -253,7 +158,7 @@ namespace LeagueSharp.Common
                     ChampionName = "Fiora",
                     Slot = SpellSlot.Q,
                     SpellName = "fioraq",
-                    SkillType = GapcloserType.Skillshot
+                    SkillType = GapcloserType.Targeted
                 });
 
             #endregion
@@ -331,19 +236,7 @@ namespace LeagueSharp.Common
                 });
 
             #endregion
-            
-            #region Illaoi
-            Spells.Add(
-                new Gapcloser
-                {
-                    ChampionName = "Illaoi",
-                    Slot = SpellSlot.W,
-                    SpellName = "illaoiwattack",
-                    SkillType = GapcloserType.Targeted
-                });
-            #endregion
-            
-            
+
             #region Irelia
 
             Spells.Add(
@@ -431,12 +324,12 @@ namespace LeagueSharp.Common
 
             #endregion
 
-            #region Leblanc
+            #region LeBlanc
 
             Spells.Add(
                 new Gapcloser
                 {
-                    ChampionName = "Leblanc",
+                    ChampionName = "LeBlanc",
                     Slot = SpellSlot.W,
                     SpellName = "leblancslide",
                     SkillType = GapcloserType.Skillshot
@@ -445,7 +338,7 @@ namespace LeagueSharp.Common
             Spells.Add(
                 new Gapcloser
                 {
-                    ChampionName = "Leblanc",
+                    ChampionName = "LeBlanc",
                     Slot = SpellSlot.R,
                     SpellName = "leblancslidem",
                     SkillType = GapcloserType.Skillshot
@@ -757,15 +650,8 @@ namespace LeagueSharp.Common
             Obj_AI_Base.OnProcessSpellCast += Obj_AI_Base_OnProcessSpellCast;
         }
 
-        /// <summary>
-        /// Occurs on an incoming enemy gapcloser.
-        /// </summary>
         public static event OnGapcloseH OnEnemyGapcloser;
 
-        /// <summary>
-        /// Fired when the game updates.
-        /// </summary>
-        /// <param name="args">The <see cref="EventArgs"/> instance containing the event data.</param>
         private static void Game_OnGameUpdate(EventArgs args)
         {
             ActiveGapclosers.RemoveAll(entry => Utils.TickCount > entry.TickCount + 900);
@@ -787,11 +673,6 @@ namespace LeagueSharp.Common
             }
         }
 
-        /// <summary>
-        /// Fired when the game processes a spell cast.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="args">The <see cref="GameObjectProcessSpellCastEventArgs"/> instance containing the event data.</param>
         private static void Obj_AI_Base_OnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
             if (!SpellIsGapcloser(args))
@@ -811,11 +692,6 @@ namespace LeagueSharp.Common
                 });
         }
 
-        /// <summary>
-        /// Checks if a spell is a gapcloser.
-        /// </summary>
-        /// <param name="args">The <see cref="GameObjectProcessSpellCastEventArgs"/> instance containing the event data.</param>
-        /// <returns></returns>
         private static bool SpellIsGapcloser(GameObjectProcessSpellCastEventArgs args)
         {
             return Spells.Any(spell => spell.SpellName == args.SData.Name.ToLower());

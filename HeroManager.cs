@@ -31,44 +31,21 @@ using LeagueSharp;
 
 namespace LeagueSharp.Common
 {
-    /// <summary>
-    /// Provides cached heroes.
-    /// </summary>
     public class HeroManager
     {
-
         /// <summary>
-        /// Gets all heroes.
+        ///     A list containing all heroes in the current match
         /// </summary>
-        /// <value>
-        /// All heroes.
-        /// </value>
         public static List<Obj_AI_Hero> AllHeroes { get; private set; }
-
         /// <summary>
-        /// Gets the allies.
+        ///     A list containing only ally heroes in the current match
         /// </summary>
-        /// <value>
-        /// The allies.
-        /// </value>
         public static List<Obj_AI_Hero> Allies { get; private set; }
-
         /// <summary>
-        /// Gets the enemies.
+        ///     A list containing only enemy heroes in the current match
         /// </summary>
-        /// <value>
-        /// The enemies.
-        /// </value>
         public static List<Obj_AI_Hero> Enemies { get; private set; }
 
-        /// <summary>
-        /// Gets the Local Player
-        /// </summary>
-        public static Obj_AI_Hero Player { get; private set; }
-
-        /// <summary>
-        /// Initializes static members of the <see cref="HeroManager"/> class. 
-        /// </summary>
         static HeroManager()
         {
             if (Game.Mode == GameMode.Running)
@@ -78,16 +55,11 @@ namespace LeagueSharp.Common
             Game.OnStart += Game_OnStart;
         }
 
-        /// <summary>
-        /// Fired when the game starts.
-        /// </summary>
-        /// <param name="args">The <see cref="EventArgs"/> instance containing the event data.</param>
         static void Game_OnStart(EventArgs args)
         {
             AllHeroes = ObjectManager.Get<Obj_AI_Hero>().ToList();
             Allies = AllHeroes.FindAll(o => o.IsAlly);
             Enemies = AllHeroes.FindAll(o => o.IsEnemy);
-            Player = AllHeroes.Find(x => x.IsMe);
         }
     }
 }

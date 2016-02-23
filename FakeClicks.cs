@@ -27,23 +27,16 @@ using SharpDX;
 namespace LeagueSharp.Common
 {
     /// <summary>
-    ///     Simulates clicks.
+    ///     The program.
     /// </summary>
     internal static class FakeClicks
     {
         #region Static Fields
 
-        /// <summary>
-        /// Gets a value indicating whether this <see cref="FakeClicks"/> is enabled.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if enabled; otherwise, <c>false</c>.
-        /// </value>
         public static bool Enabled
         {
             get { return root.Item("Enable").IsActive(); }
         }
-
         /// <summary>
         ///     If the user is attacking
         ///     Currently used for the second style of fake clicks
@@ -53,7 +46,7 @@ namespace LeagueSharp.Common
         /// <summary>
         ///     The delta t for click frequency
         /// </summary>
-        private static readonly float deltaT = 0.15f;
+        private static readonly float deltaT = .2f;
 
         /// <summary>
         ///     The last direction of the player
@@ -223,25 +216,18 @@ namespace LeagueSharp.Common
             }
         }
 
-        /// <summary>
-        /// Initializes this instance.
-        /// </summary>
         public static void Initialize()
         {
             CustomEvents.Game.OnGameLoad += Game_OnGameLoad;
         }
 
-        /// <summary>
-        /// Fired when the game loads.
-        /// </summary>
-        /// <param name="args">The <see cref="EventArgs"/> instance containing the event data.</param>
         private static void Game_OnGameLoad(EventArgs args)
         {
             root.AddItem(new MenuItem("Enable", "Enable").SetValue(false));
             root.AddItem(new MenuItem("Click Mode", "Click Mode"))
                 .SetValue(new StringList(new[] { "Evade, No Cursor Position", "Cursor Position, No Evade" }));
 
-            CommonMenu.Instance.AddSubMenu(root);
+            CommonMenu.Config.AddSubMenu(root);
 
             player = ObjectManager.Player;
 
@@ -252,11 +238,6 @@ namespace LeagueSharp.Common
             Obj_AI_Base.OnIssueOrder += OnIssueOrder;
         }
 
-        /// <summary>
-        /// Shows the click.
-        /// </summary>
-        /// <param name="position">The position.</param>
-        /// <param name="type">The type.</param>
         private static void ShowClick(Vector3 position, ClickType type)
         {
             if (!Enabled)

@@ -1,15 +1,7 @@
-﻿using System;
-
-namespace LeagueSharp.Common
+﻿namespace LeagueSharp.Common
 {
-    /// <summary>
-    /// Adds hacks to the menu.
-    /// </summary>
     internal class Hacks
     {
-        /// <summary>
-        /// Initializes this instance.
-        /// </summary>
         internal static void Initialize()
         {
             CustomEvents.Game.OnGameLoad += eventArgs =>
@@ -52,7 +44,8 @@ namespace LeagueSharp.Common
                     {
                         LeagueSharp.Hacks.TowerRanges = args.GetNewValue<bool>();
                     };
-                CommonMenu.Instance.AddSubMenu(menu);
+
+                CommonMenu.Config.AddSubMenu(menu);
             };
         }
     }
